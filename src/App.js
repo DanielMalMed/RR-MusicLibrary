@@ -6,6 +6,9 @@ import { DataContext } from './context/DataContext'
 import { SearchContext } from './context/SearchContext'
 import AlbumView from "./components/AlbumView"
 import ArtistView from "./components/ArtistView"
+import "./App.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {
@@ -33,8 +36,8 @@ function App() {
     }
 
     return (
-        <div className="App">
-            {message}
+        <div >
+            <div className='message'>{message}</div>
             <Router>
                 <Routes>
                     <Route path="/" element={
@@ -43,11 +46,14 @@ function App() {
                                 term: searchInput,
                                 handleSearch: handleSearch
                             }}>
+                                <div className="p-3 mb-2 bg-info text-dark">
                                 <SearchBar />
+                                </div>
                             </SearchContext.Provider>
-                            {message}
                             <DataContext.Provider value={data}>
+                                <div className="p-3 mb-2 bg-success text-white">
                                 <Gallery />
+                                </div>
                             </DataContext.Provider>
                         </Fragment>
                     } />
